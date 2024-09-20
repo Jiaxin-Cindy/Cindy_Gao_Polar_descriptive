@@ -1,15 +1,52 @@
-from main import load_dataset, get_mean, get_median, get_std, save_to_md, create_boxplot
+from main import (
+    load_dataset_pl,
+    pl_describe,
+    get_mean,
+    get_median,
+    get_std,
+    save_to_md,
+    create_boxplot,
+)
 
+import polars as pl
 import pandas as pd
+from pyinstrument import Profiler
 
 data = "https://raw.githubusercontent.com/anlane611/datasets/main/population.csv"
-dataframe = load_dataset(data)
-
+dataframe = load_dataset_pl(data)
 
 print(dataframe)
 
+
+def load_dataset_pd(dataset):
+    df = pd.read_csv(dataset)
+    return df
+
+
+# Use Profiler to compare pandas and polars
+with Profiler(interval=0.1) as profiler:
+    check_pl = data
+    df = load_dataset_pl(check_pl)
+    print(df.shape)
+    print(pl_describe(df))
+    print(df["Y"].mean)
+    print(df["Y"].median)
+
+profiler.print()
+
+with Profiler(interval=0.1) as profiler:
+    check_pd = data
+    df = load_dataset_pd(check_pd)
+    print(df.shape)
+    print(pl_describe(df))
+    print(df["Y"].mean)
+    print(df["Y"].mean)
+
+profiler.print()
+
+
 # Print descriptive statistics
-print(dataframe.describe())
+print(pl_describe(dataframe))
 print(get_mean(dataframe, "Y"))
 print(get_median(dataframe, "Y"))
 print(get_std(dataframe, "Y"))

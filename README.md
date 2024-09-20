@@ -1,5 +1,4 @@
-[![Assignment 1 Python Application Test with Github Actions from Cindy](https://github.com/nogibjj/Cindy_Gao_pandas_descriptive/actions/workflows/actions.yml/badge.svg)](https://github.com/nogibjj/Cindy_Gao_pandas_descriptive/actions/workflows/actions.yml)
-# Cindy_Gao_pandas_descriptive
+# Cindy_Gao_polars_descriptive
 
 - .devcontainer: It sets up a consistent development environment across different machines.
 - .github/workflows: It defines automated workflows for CI/CD tasks
@@ -14,11 +13,12 @@
 
 
 # Purpose for this project:
-1. Use Pandas to read csv file
-2. Write pandas functions for calculating mean, median and standard deviation for variables
+1. Use Polars to read csv file
+2. Write polars functions for calculating mean, median and standard deviation for variables
 3. Compare the functions for the accuracy
 4. Create data visualization (a boxplot) for variable Y
 5. Create a markdown or pdf file for the summary
+6. Use Profiler to compare between Pandas and Polars
 
 
 # Url to the raw data:

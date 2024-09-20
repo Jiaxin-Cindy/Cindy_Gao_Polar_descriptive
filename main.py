@@ -1,11 +1,15 @@
 import matplotlib.pyplot as plt
-import pandas as pd
+import polars as pl
 
 
 # read dataset from csv file
-def load_dataset(dataset):
-    df = pd.read_csv(dataset)
+def load_dataset_pl(dataset):
+    df = pl.read_csv(dataset)
     return df
+
+
+def pl_describe(df):
+    return df.describe()
 
 
 # calculate the mean of variable:
